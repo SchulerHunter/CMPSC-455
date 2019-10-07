@@ -1,0 +1,18 @@
+f1 = @(x) x - cos(x);
+f2 = @(x) x^2 - 2 * x * cos(x) + cos(x)^2;
+fp1 = @(x) 1+sin(x);
+fp2 = @(x) 2*x-2*cos(x)+2*x*sin(x)-sin(2*x);
+x0 = 0;
+maxIter = 100;
+tol1 = 10^-5;
+tol2 = 10^-6;
+tol3 = 10^-8;
+tol4 = 10^-10;
+newtonMethod(f1, fp1, x0, tol1, maxIter);
+newtonMethod(f2, fp2, x0, tol1, maxIter);
+newtonMethod(f1, fp1, x0, tol2, maxIter);
+newtonMethod(f2, fp2, x0, tol2, maxIter);
+newtonMethod(f1, fp1, x0, tol3, maxIter);
+newtonMethod(f2, fp2, x0, tol3, maxIter);
+newtonMethod(f1, fp1, x0, tol4, maxIter);
+newtonMethod(f2, fp2, x0, tol4, maxIter);
