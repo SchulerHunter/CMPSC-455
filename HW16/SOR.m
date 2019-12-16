@@ -1,4 +1,4 @@
-function iter=SOR(A,b,omega,x0,maxIter,tol)
+function x=SOR(A,b,omega,x0,maxIter,tol)
 %A-- a nXn matrix
 %b-- a nX1 vector
 %x-- a solution of Ax=b

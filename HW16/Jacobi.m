@@ -1,4 +1,4 @@
-function iter=SOR(A,b,omega,x0,maxIter,tol)
+function x=Jacobi(A,b,x0,maxIter,tol)
 %A-- a nXn matrix
 %b-- a nX1 vector
 %x-- a solution of Ax=b
@@ -6,15 +6,10 @@ D=diag(A);
 L=tril(A)-diag(D);
 U=triu(A)-diag(D);
 iter=0;
-n=size(A,1);
-x=x0;
 
 %fprintf('\tIteration\t|\tResidual\t\n');
 while (true)
-    for i=1:n
-        x(i)=omega*(b(i)-L(i,:)*x-U(i,:)*x0)/D(i)...
-             +(1-omega)*x0(i);
-    end
+    x=-(L+U)*x0./D+b./D;
     iter=iter+1;
     %fprintf('\t%d\t\t\t|\t%d\t\t\n', [iter, norm(A*x-b)]);
     if iter>maxIter

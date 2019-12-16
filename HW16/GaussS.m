@@ -1,4 +1,4 @@
-function iter=SOR(A,b,omega,x0,maxIter,tol)
+function x=GaussS(A,b,x0,maxIter,tol)
 %A-- a nXn matrix
 %b-- a nX1 vector
 %x-- a solution of Ax=b
@@ -12,8 +12,7 @@ x=x0;
 %fprintf('\tIteration\t|\tResidual\t\n');
 while (true)
     for i=1:n
-        x(i)=omega*(b(i)-L(i,:)*x-U(i,:)*x0)/D(i)...
-             +(1-omega)*x0(i);
+        x(i)=(b(i)-L(i,:)*x-U(i,:)*x0)/D(i);
     end
     iter=iter+1;
     %fprintf('\t%d\t\t\t|\t%d\t\t\n', [iter, norm(A*x-b)]);
